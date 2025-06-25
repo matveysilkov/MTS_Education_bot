@@ -11,7 +11,7 @@ import os  # Модуль для работы с операционной сис
 load_dotenv()
 
 # Создаём бота, получая токен из переменной окружения
-bot = Bot(token=os.getenv("TOKEN3"))
+bot = Bot(token="8174711542:AAFQXVG0FoO07Wo6kR_f5D7FWkpXMuiP84Y")
 dp = Dispatcher()
 
 a="10"
@@ -126,6 +126,7 @@ async def process_name(message: types.Message, state: FSMContext):
 @dp.message(Form.zad3)
 async def process_name(message: types.Message, state: FSMContext):
     await state.update_data(zad3=message.text)
+    await state.set_state(Form.kon)
     data = await state.get_data()
     print(data)
     kek = 0
@@ -158,9 +159,10 @@ async def process_name(message: types.Message, state: FSMContext):
     else:
         await message.answer("❌Вы нам не подходите")
 
-
-
-
-
+@dp.message(Form.kon)
+async def process_name(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    print(data)
+    await state.update_data(kon=message.text)
 
 dp.run_polling(bot)
