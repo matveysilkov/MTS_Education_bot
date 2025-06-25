@@ -11,7 +11,7 @@ import os  # Модуль для работы с операционной сис
 load_dotenv()
 
 # Создаём бота, получая токен из переменной окружения
-bot = Bot(token="8174711542:AAFQXVG0FoO07Wo6kR_f5D7FWkpXMuiP84Y")
+bot = Bot(token="")
 dp = Dispatcher()
 
 a="10"
